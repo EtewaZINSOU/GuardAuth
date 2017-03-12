@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block main %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+                <div class="panel panel-success">
+                    <div class="panel-heading">List of Game of Thrones Characters</div>
+
+                    {% if app.user != null %}
+                        <table class="table">
+                            <tr>
+                                <th>Character</th>
+                                <th>Real Name</th>
+                            </tr>
+
+                            {% for key, item in characters %}
+                                <tr>
+                                    <td>{{ key }}</td><td>{{ item }}</td>
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    {% endif %}
+                </div>
+
+                {% if app.user == null %}
+                    <a href="{{ path('login') }}" class="btn btn-info"> You need to login to see the list 😜😜 >></a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block javascripts %}
+    <script src="https://cdn.auth0.com/js/lock/10.8.0/lock.min.js"></script><script>
+        var lock = new Auth0Lock(
+                "7I3KXNi6ZeBq6oL0xnlfk1SrW6KntwR5",
+                "pwdlessdemo.auth0.com",
+                {
+                    allowedConnections: ["Username-Password-Authentication","google-oauth2","facebook","twitter"],
+                    rememberLastLogin: false,
+                    socialButtonStyle: "big",
+                    theme: {},
+                    languageDictionary: {"title":"Auth0Alexis"},
+                    language: "fr"
+                }
+        );
+
+        lock.show();
+    </script>
+{% endblock %}

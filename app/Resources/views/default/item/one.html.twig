@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block main %}
+    <div class="container">
+        {{ form_start(form) }} <br />
+
+        {{ form_row(form.title) }}
+        {{ form_row(form.description) }}
+        {{ form_row(form.imageUrl) }}
+        {{ form_row(form.code) }}
+        {{ form_row(form.collection) }}
+        {{ dump(app.user) }}
+        {#{% if app.user.hasRole('IS_AUTHENTICATED_ANONYMOUSLY') %}#}
+            {#{{ form_row(form.changeOwner) }}#}
+        {#{% endif %}#}
+        {{ form_end(form) }}
+    </div>
+
+    {#<div class="container">#}
+        {#{% for item in items %}#}
+            {#{{ item.title }} | <a href="{{ path('oneItem', {id: item.id}) }}">View</a> {% if app.user.hasRole('ROLE_ADMIN') %}| <a href="{{ path('removeItem', {id: item.id}) }}">Remove</a>{% endif %}<br />#}
+        {#{% endfor %}#}
+    {#</div>#}
+
+{% endblock %}
+

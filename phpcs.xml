@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<ruleset name="Etewa PHPCS">
+    <description>The traning Etewa</description>
+
+    <config name="installed_paths" value="vendor/escapestudios/symfony2-coding-standard/"/>
+
+    <arg name="extensions" value="php"/>
+
+    <rule ref="Symfony2">
+        <exclude name="Squiz.Strings.ConcatenationSpacing.PaddingFound"/>
+        <exclude name="Symfony2.Commenting.FunctionComment.SpacingAfterParamType"/>
+    </rule>
+</ruleset>

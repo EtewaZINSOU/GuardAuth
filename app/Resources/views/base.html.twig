@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>{% block title %}Collectmaster!{% endblock %}</title>
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('vendors/bootstrap/dist/css/bootstrap.css') }}">
+        <link rel="stylesheet" href="{{ asset('vendors/css/collectmaster.css') }}">
+    {% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+</head>
+<body>
+<div class="container">
+    {% block menu %}
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">Symfony</a>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="#">Home</a></li>
+                        <li><a href="#">Collection</a></li>
+
+                        <li>
+                            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                                Connecté en tant que{{ app.user.name }} |
+                                <a href="{{ path('logout') }}">
+                                    Logout
+                                </a>
+                            {% else %}
+                                <a href="{{ path('login') }}"> Login</a>
+                            {% endif %}
+                        </li>
+                    </ul>
+                    <a class="pull-right btn btn-info account" href="#">Account</a>
+                </div><!--/.nav-collapse -->
+
+
+            </div><!--/.container-fluid -->
+
+
+
+
+
+        </nav>
+    {% endblock %}
+    {% block main %}{% endblock %}
+</div>
+{% block javascripts %}
+{% endblock %}
+</body>
+</html>
